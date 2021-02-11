@@ -1,0 +1,12 @@
+{
+  "name": "numou-task",
+  "displayName": "numou-task",
+  "expo": {
+    "name": "numou-task",
+    "slug": "numou-task",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
