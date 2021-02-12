@@ -1,0 +1,3 @@
+export const SART_DATA_FETCH = "SART_DATA_FETCH";
+export const DATA_FETCH_FAIL = "DATA_FETCH_FAIL";
+export const DATA_FETCH_SUCESS = "DATA_FETCH_SUCESS";

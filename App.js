@@ -1,21 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+import React, {Component} from 'react';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { DailyMeals } from "./Containers/DailyMeals";
+import { MonthlyMeals } from "./Containers/MonthlyMeals";
+import { connect } from "react-redux";
+import * as actions from './store/actions/actions'
+const Stack = createStackNavigator();
+class App extends Component{
+  componentDidMount() {
+    this.props.onFirstRender()
+    }
+  render() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+        <NavigationContainer>
+          <Stack.Navigator>
+                <Stack.Screen
+                  name="DailyMeals"
+                  component={DailyMeals}
+                  options={{title:"Daily View"}} 
+              />
+              <Stack.Screen 
+                name="MonthlyMeals"  
+                component={MonthlyMeals}
+                options={{title:"Monthly View"}}
+                />
+          </Stack.Navigator>
+        </NavigationContainer>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  )
+  }
+};
+
+const mapStateToProps = state => {
+  return {
+    data: state.data !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFirstRender: () => dispatch(actions.fetchData())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
