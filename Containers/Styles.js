@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   },
     mealsContainer: {
        flex: 4,
-       flexDirection: "row-reverse",
+       flexDirection: "row",
        alignContent: "center",
        justifyContent: "center",
   },

@@ -49,9 +49,9 @@ class  DailyMeals extends Component {
          const { selectedDay, selectedImage} = this.state;
          const {data} = this.props
          // global state redux implementation can be console.log from destructring this.props
-         console.log(this.state)
+        //  console.log(this.state)
          // please check console in developer tools to see random user data fetched
-         console.log(data)
+        //  console.log(data)
         return (
             <View style={styles.container}>
                 <ImageBackground source={require("../assets/background.jpg")} style={styles.image}>
@@ -90,7 +90,7 @@ class  DailyMeals extends Component {
                         <TouchableOpacity style={styles.tabButton}
                             onPress={ () => this.handleTabBar('nxt') }
                                 >
-                        <Text style={styles.textDayButton}><Icon name="arrow-right" size={30} color="white" /></Text>      
+                        <Text style={styles.textDayButton}>NEXT</Text>      
                         </TouchableOpacity>         
                             <Image
                                 style={styles.mealImage}
@@ -98,7 +98,7 @@ class  DailyMeals extends Component {
                         <TouchableOpacity style={styles.tabButton} 
                             onPress={  () => this.handleTabBar('prev') }
                                 >
-                        <Text style={styles.textDayButton}><Icon name="arrow-left" size={30} color="white" /></Text>      
+                        <Text style={styles.textDayButton}>PREV</Text>      
                         </TouchableOpacity>
                     </View>
                     <Text style={styles.textNavButton}>{selectedImage.name}</Text>
