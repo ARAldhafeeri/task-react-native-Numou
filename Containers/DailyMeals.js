@@ -3,14 +3,20 @@ import {ImageBackground, TouchableOpacity, Text, Image, View } from 'react-nativ
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { styles} from './Styles';
 import {days, meals_data} from '../data/data'
- export class  DailyMeals extends Component {
+import { connect } from "react-redux";
+import * as actions from '../store/actions/action'
+
+class  DailyMeals extends Component {
      state = {
          selectedDay: 0,
          DayMeals: meals_data[0],
          mealNo: 0,
-         selectedImage: meals_data[0][0],
-         data: {}
+         selectedImage: meals_data[0][0]
      }
+
+    componentDidMount() {
+            this.props.fetchData();
+        }
      handleDayClick = (clickedDay) => {
          this.setState({selectedDay: clickedDay,
                         DayMeals: meals_data[clickedDay],
@@ -41,9 +47,11 @@ import {days, meals_data} from '../data/data'
      render () {
          const { navigation } = this.props;
          const { selectedDay, selectedImage} = this.state;
-         // global state redux implementation is in the state as fetched data
+         const {data} = this.props
+         // global state redux implementation can be console.log from destructring this.props
          console.log(this.state)
-         console.log(this.props)
+         // please check console in developer tools to see random user data fetched
+         console.log(data)
         return (
             <View style={styles.container}>
                 <ImageBackground source={require("../assets/background.jpg")} style={styles.image}>
@@ -103,3 +111,19 @@ import {days, meals_data} from '../data/data'
 
 
 
+const mapStateToProps = state => {
+  return {
+    data:  state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchData: () => dispatch(actions.fetchData())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DailyMeals);
