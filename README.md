@@ -89,11 +89,11 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 I had to do this:
 1- Created assetsTransformer.js and transformed the assests.
 2- added more configurations to jest:
-"jest": { "moduleNameMapper": { "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js", "\\.(css|less)$": "<rootDir>/assetsTransformer.js" } },
+```"jest": { "moduleNameMapper": { "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js", "\\.(css|less)$": "<rootDir>/assetsTransformer.js" } },```
 
 
 ### final jest setup in package.json
-
+```
   "jest": {
     "preset": "react-native",
     "moduleNameMapper": { 
@@ -115,7 +115,7 @@ I had to do this:
   },
   "private": true
 }
-
+```
 
 
   
